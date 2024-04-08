@@ -1,0 +1,287 @@
+<!-- views/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Ordering App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!-- <script src="/main.js"></script> -->
+    <!-- Link to Boxicons CSS file (from CDN) -->
+<link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.0/css/boxicons.min.css" rel="stylesheet">
+<!-- <script src="cart.js"></script> -->
+
+
+    <style>
+        /* Add your custom styles here */
+        .image-container {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+   <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Natural Ghee</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a> <!-- Example menu page -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#footer">contact us</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <% if (user) { %>
+                     <a class="nav-link" href="/profile" id="user-name-link">
+                        Welcome, <%= user.name %>
+                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a> <!-- Redirect to logout page -->
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a> <!-- Redirect to login page -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">Signup</a> <!-- Redirect to signup page -->
+                    </li>
+                <% } %>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="cart-icon">
+                        <img src="images/bxs-cart-alt.svg" alt="Cart Image" style="filter: invert(1);">
+                        <span id="cart-count">0</span>
+                    </a>
+                </li>
+                <div class="modal" id="cart-modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Shopping Cart</h2>
+                        <ul id="cart-items"></ul>
+                        <!-- <button id="checkout-btn">Checkout</button> -->
+                    </div>
+                </div>
+            </ul>
+            
+        </div>
+    </div>
+</nav>
+<div id="user-details-container"></div>
+
+
+    <!-- Body Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Natural Ghee</h2>
+                <p>Our Farm is a Bio-diverse, Organic ecosystem, certified by ECOCERT and located in the beautiful village near Bangalore. <br>Our work is inspired by ancient wisdom and sustainability. Every time you buy from us, you help pull back carbon from the atmosphere into the soil, <br>secure rural livelihoods and empower women in our villages.</p>
+                <div class="mt-4">
+                    <a href="https://wa.me/+918106167946?text=I'm%20interested%20in%20your%20Ghee%20to%20buy." class="hero-btn">WhatsApp Us now</a>
+      
+                  </div>
+            </div>
+            <div class="col-md-6">
+                <img src="images/ghee_main.png" class="img-fluid image-container" alt="Food Image">
+            </div>
+        </div>
+    </div>
+    <section id="about" class="my-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-10 mt-md-10 mt-5">
+              <h2>Welcome</h2>
+              <p>We're passionate about providing you with the finest organic ghee, crafted with care and dedication. Our organic ghee is more than just clarified butter; it's a celebration of purity, flavor, and health.<br>
+                <b>Why Choose Organic Ghee?</b><br>
+                Experience the Difference: Our organic ghee is sourced from the purest organic milk, free from synthetic hormones, antibiotics, and GMOs. With a commitment to organic farming practices, we ensure that every spoonful of our ghee is brimming with natural goodness.</p>
+            </div>
+          </div>
+        </div>
+        </section>
+    <section id="exploreFood">
+        <section class="container my-5">
+            <div class="text-center mx-md-5 px-md-5">
+                <h2 class="pb-0 mb-0">Our Products</h2>
+            </div>
+            <div class="row my-5">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/Ghee1.jpeg" class="img-fluid mb-2" alt="">
+                        <h4 id="productName">Pure Ghee</h4>
+        <p class="text-color">Quantity: 1</p>
+        <h2 id="productPrice" class="primary-color mb-3"> <i class="fa-solid fa-indian-rupee-sign"></i>300</h2>
+        <div>
+            <button class="main-btn">Add to cart</button>
+        </div>
+                    </div>
+                </div>
+               <div class="col-md-4">
+    <div class="card">
+        <img src="images/Ghee1.jpeg" class="img-fluid mb-2" alt="">
+        <h4 id="productName">Pure Ghee</h4>
+        <p class="text-color">Quantity: 1</p>
+        <h2 id="productPrice" class="primary-color mb-3"> <i class="fa-solid fa-indian-rupee-sign"></i>350</h2>
+        <div>
+            <button class="main-btn addToCartBtn">Add to cart</button>
+        </div>
+    </div>
+</div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/Ghee3.jpeg" class="img-fluid mb-2" alt="" style="height: 250px;">
+                         <h4 id="productName">Pure Ghee</h4>
+        <p class="text-color">Quantity: 1</p>
+        <h2 id="productPrice" class="primary-color mb-3"> <i class="fa-solid fa-indian-rupee-sign"></i>300</h2>
+        <div>
+            <button class="main-btn">Add to cart</button>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+  </section> 
+
+  <section id="footer" class="footer">
+    <h4>Our Social Media Handles</h4>
+    <p>For more visit our Social media sites</p>
+<ul class="footer__social">
+    <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+        <i class='bx bxl-facebook'></i>
+    </a>
+
+    <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+        <i class='bx bxl-twitter' ></i>
+    </a>
+
+    <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+        <i class='bx bxl-instagram' ></i>
+    </a>
+    <a href="https://www.linkedin.com/" target="_blank" class="footer__social-link">
+        <i class='bx bxl-linkedin' ></i>
+    </a>
+
+</ul>
+<p>Made with <i class="fa fa-heart-o"></i> by easy Online Services</p>
+</section>
+
+    <!-- Bootstrap JS, jQuery, Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+ document.addEventListener('DOMContentLoaded', function() {
+    const cartIcon = document.getElementById('cart-icon');
+    const cartModal = document.getElementById('cart-modal');
+    const cartCountElement = document.getElementById('cart-count');
+    const cartItemsList = document.getElementById('cart-items');
+    const closeButton = document.querySelector('.close');
+    // const checkoutButton = document.getElementById('checkout-btn');
+
+    let cartCount = parseInt(cartCountElement.textContent); 
+
+    // Update cart count and display cart contents when cart icon is clicked
+    cartIcon.addEventListener('click', function(event) {
+       
+        event.preventDefault();
+        displayCart();
+    });
+
+    // Close the cart modal when the close button is clicked
+    closeButton.addEventListener('click', function() {
+        cartModal.style.display = 'none';
+    });
+
+    // Display cart contents
+    function displayCart() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Clear previous cart items
+        cartItemsList.innerHTML = '';
+
+        if (cart.length === 0) {
+            cartItemsList.innerHTML = '<p>Your cart is empty.</p>';
+        } else {
+            // Render cart items
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} (Quantity: ${item.quantity}, Price: ₹${item.price})`;
+                cartItemsList.appendChild(listItem);
+            });
+        }
+
+        // Show the cart modal
+        cartModal.style.display = 'block';
+    }
+
+    // Checkout button click handler (you can implement your checkout logic here)
+    // checkoutButton.addEventListener('click', function() {
+    //     // Implement checkout functionality (e.g., process order)
+    //     alert('Checkout button clicked!');
+    //     // Optionally, you can clear the cart or proceed to a checkout page
+    // });
+
+    // Add to Cart button click handler
+    const addToCartButtons = document.querySelectorAll('.main-btn');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            // Check if the user is authenticated based on the presence of user name in navbar
+            const userNameElement = document.getElementById('user-name-link');
+            if (userNameElement && userNameElement.textContent.trim().startsWith('Welcome')) {
+                const userName = userNameElement.textContent.trim().replace('Welcome, ', '');
+                const productContainer = button.closest('.card');
+
+                if (productContainer) {
+                    const productName = productContainer.querySelector('#productName').textContent;
+                    const productQuantity = productContainer.querySelector('.text-color').textContent.split(': ')[1];
+                    const productPrice = parseFloat(productContainer.querySelector('#productPrice').textContent.slice(1));
+
+                    const product = {
+                        name: productName,
+                        quantity: parseInt(productQuantity),
+                        price: productPrice
+                    };
+
+                    addToCart(product, userName);
+                    cartCount += product.quantity;
+                    cartCountElement.textContent = cartCount.toString();
+
+                    displayCart(); // Update cart display when adding item
+                }
+            } else {
+                alert('User not authenticated. Redirecting to login page...');
+                window.location.href = '/login';
+            }
+        });
+    });
+
+    // Function to add product to cart and store in localStorage
+    function addToCart(product, userName) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ ...product, userName });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${product.name} added to cart for ${userName}!`);
+    }
+});
+
+
+
+ </script>
+    
+</body>
+</html>

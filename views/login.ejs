@@ -1,0 +1,77 @@
+<!-- views/login.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Food Ordering App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Natural Ghee</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/#about">About</a> <!-- Example menu page -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/#footer">contact us</a>
+            </li>
+        </ul>
+            <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a> <!-- Redirect to login page -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">Signup</a> <!-- Redirect to signup page -->
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> <img src="images/bxs-cart-alt.svg"  alt="cart Image"style="filter: invert(1);" ></a>
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+</nav>
+
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-6">
+        <h2>Login to Food Ordering App</h2>
+        <!-- <% if (typeof error !== 'undefined') { %>
+          <div class="alert alert-danger" role="alert">
+              <%= error %>
+          </div>
+      <% } %> -->
+        <form id="loginForm" action="/login" method="post"> <!-- Add action and method attributes -->
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <p>Not registered yet? <a href="/signup">Signup</a></p> 
+        </div>
+        <div class="col-md-6">
+          <img src="images/ghee_main.png" class="img-fluid image-container" alt="Food Image">
+        </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!-- profile.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/styles.css">
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Natural Ghee</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#footer">contact us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <% if (user) { %>
+                         <a class="nav-link" href="/profile" id="user-name-link">
+                            Welcome, <%= user.name %>
+                        </a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a> <!-- Redirect to logout page -->
+                        </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a> <!-- Redirect to login page -->
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/signup">Signup</a> <!-- Redirect to signup page -->
+                        </li>
+                    <% } %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"> <img src="images/bxs-cart-alt.svg"  alt="cart Image"style="filter: invert(1);" ></a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="card" id="profile-card">
+            <div class="card-header">
+                <h3>User Profile</h3>
+            </div>
+            <div class="card-body">
+                <p class="card-title">Name: <%= user.name %></p>
+                <p class="card-text">Email: <%= user.email %></p>
+                <p class="card-text">Password: <%= user.password %></p>
+                <p class="card-text">Phone Number: <%= user.phoneNumber || 'Not available' %></p>
+                <p class="card-text">Address: <%= user.address %></p>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Include Bootstrap JS (jQuery and Popper.js required) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
