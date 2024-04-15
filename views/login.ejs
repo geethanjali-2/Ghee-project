@@ -22,56 +22,67 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/#about">About</a> <!-- Example menu page -->
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/#footer">contact us</a>
-            </li>
-        </ul>
-            <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a> <!-- Redirect to login page -->
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/signup">Signup</a> <!-- Redirect to signup page -->
-                    </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"> <img src="images/bxs-cart-alt.svg"  alt="cart Image"style="filter: invert(1);" ></a>
+                    <a class="nav-link" href="/#about">About</a> <!-- Example menu page -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#footer">Contact Us</a>
                 </li>
             </ul>
-            
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a> <!-- Redirect to login page -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">Signup</a> <!-- Redirect to signup page -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <img src="images/bxs-cart-alt.svg" alt="Cart Image" style="filter: invert(1);">
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
 
-    <div class="container mt-4">
-      <div class="row">
+<div class="container mt-4">
+    <div class="row">
         <div class="col-md-6">
-        <h2>Login to Food Ordering App</h2>
-        <!-- <% if (typeof error !== 'undefined') { %>
-          <div class="alert alert-danger" role="alert">
-              <%= error %>
-          </div>
-      <% } %> -->
-        <form id="loginForm" action="/login" method="post"> <!-- Add action and method attributes -->
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-        <p>Not registered yet? <a href="/signup">Signup</a></p> 
+            <h2>Login to Food Ordering App</h2>
+            <% if (typeof error !== 'undefined') { %>
+                <div id="error" class="alert alert-danger mt-3" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+            <form id="loginForm" action="/login" method="post">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <p class="login">Not registered yet? <a href="/signup">Signup</a></p> 
         </div>
         <div class="col-md-6">
-          <img src="images/ghee_main.png" class="img-fluid image-container" alt="Food Image">
+            <img src="images/ghee_main.png" class="img-fluid image-container" alt="Food Image">
         </div>
-        </div>
-
     </div>
+</div>
+
+<script>
+    // JavaScript to show error message if present
+    document.addEventListener('DOMContentLoaded', () => {
+        const errorElement = document.getElementById('error');
+        if (errorElement && errorElement.textContent.trim() !== '') {
+            errorElement.style.display = 'block'; // Display error message
+        }
+    });
+</script>
+
 </body>
 </html>

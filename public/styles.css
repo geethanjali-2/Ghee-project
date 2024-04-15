@@ -129,8 +129,10 @@ p{
   display: inline-block;
   padding:0.625rem 1.875rem;
   line-height: 1.50rem;
-  background-color: red;
-  border:0.1856rem solid var(--primary-color);
+  background-color:rgb(21, 169, 228);
+  /* border:0.1856rem solid var(--primary-color); */
+  border: none;
+  border-radius: 10px;
   color:var(--primary-color);
   font-size:0.9175rem;
   font-weight:bold;
@@ -141,8 +143,14 @@ p{
 
 
 .main-btn:hover{
-  background-color: red;
+  background-color: #d8e612;
   color:brown;
+  border-radius: 10px;
+
+  
+}
+.login a{
+   color: red;
 }
 
 
@@ -223,6 +231,9 @@ p{
     color: #f44336;
   }
 
+  .alert{
+    display: none;
+  }
   .footer__social {
     display: flex;
     column-gap: 1rem;

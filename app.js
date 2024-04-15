@@ -144,30 +144,6 @@ app.get('/logout', (req, res) => {
     });
 });
 
-// Define route for the homepage
-app.get('/', async (req, res) => {
-  try {
-      // Fetch sample products from the database
-      const sampleProducts = await Product.find().limit(3); // Limit to 3 sample products
-      // Render the index.ejs file and pass the sample products variable
-      res.render('index', { user: req.user, sampleProducts: sampleProducts });
-  } catch (error) {
-      console.error(error);
-      res.status(500).send('An error occurred');
-  }
-});
-app.get('/', async (req, res) => {
-  try {
-      // Fetch sample products from the database
-      const sampleProducts = await Product.find().limit(3); // Limit to 3 sample products
-      // Render the index.ejs file and pass the sample products variable
-      res.render('index', { user: req.user, sampleProducts: sampleProducts });
-  } catch (error) {
-      console.error(error);
-      res.status(500).send('An error occurred');
-  }
-});
-
 app.post('/login', passport.authenticate('local'), (req, res) => {
     // Successful authentication, redirect or respond as needed
     res.redirect('/');
@@ -220,43 +196,11 @@ function isAuthenticated(req, res, next) {
         res.status(401).json({ error: 'Unauthorized' });
     }
 }
-// Assuming you have an Express app instance named 'app'
 
-// Route handler for rendering the profile page
 app.get('/profile', isAuthenticated, (req, res) => {
     // Render the 'profile' view/template with user details
     res.render('profile', { user: req.user });
 });
-
-
-// app.post('/add', async (req, res) => {
-//     const { productName, quantity, price } = req.body;
-//     const userId = req.session.user._id; // Assuming user ID is stored in session
-//     const newItem = new CartItem({ userId, productName, quantity, price });
-
-//     try {
-//         await newItem.save();
-//         res.status(201).send('Item added to cart');
-//     } catch (error) {
-//         res.status(500).send('Failed to add item to cart');
-//     }
-// });
-
-// // Get user's cart items
-// app.get('/', async (req, res) => {
-//     const userId = req.session.user._id; // Assuming user ID is stored in session
-
-//     try {
-//         const cartItems = await CartItem.find({ userId });
-//         res.json(cartItems);
-//     } catch (error) {
-//         res.status(500).send('Failed to fetch cart items');
-//     }
-// });
-
-
-// Mount routes
-// app.use('/products', productRoutes);
 
 // Start the server
 app.listen(port, () => {
